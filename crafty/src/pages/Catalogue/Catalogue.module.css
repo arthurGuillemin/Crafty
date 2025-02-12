@@ -6,13 +6,6 @@ body {
   padding: 30px;
 }
 
-h1 {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
