@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './Catalogue.module.css';
+import Home from '../Home/Home';
 
 
 const mockProducts = [
@@ -53,6 +54,7 @@ const Catalogue = () => {
 
   return (
     <div className={styles.catalogueContainer}>
+      <Home />
       <h1>Catalogue des Produits</h1>
       <div className={styles.productGrid}>
         {products.map((product) => (

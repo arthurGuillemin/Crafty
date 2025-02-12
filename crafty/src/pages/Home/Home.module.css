@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.myHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0px 15px;
+
+}
+
+.myHeader img {
+    height: 100px; 
+}
+
+.rightSide{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.headerButtons {
+    display: flex;
+}
+
+.Labuttonee{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 10px; 
+}
+
+
+.myIcon{
+    width: 25px;
+    margin: 0px 15px;
+}
+
+.myIcon1{
+    width: 21px;
+}
+
+.myButton {
+    font-family: "Montserrat", serif;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 30px;
+    margin: 0px 10px;
+    background-color: #858c79;
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.myButton:hover {
+    background-color: #5c6154;
+}
