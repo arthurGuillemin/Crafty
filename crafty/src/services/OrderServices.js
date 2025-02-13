@@ -18,7 +18,7 @@ export const fetchOrdersByUserId = async (userId) => {
 // Fetch pour récupérer les détails d'une commande par ID
 export const fetchOrderDetailsById = async (orderId) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/details/${orderId}`);
+    const response = await fetch(`http://127.0.0.1:5000/orders/details/${orderId}`);
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des détails de la commande");
@@ -35,7 +35,7 @@ export const fetchOrderDetailsById = async (orderId) => {
 // Fetch pour créer une nouvelle commande
 export const createOrder = async (orderData) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/new", {
+    const response = await fetch("http://127.0.0.1:5000/orders/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
