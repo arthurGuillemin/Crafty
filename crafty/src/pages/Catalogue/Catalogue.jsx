@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import styles from './Catalogue.module.css';
+import Home from '../Home/Home';
 import { getAllProducts } from "../../services/productService";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import styles from "./Catalogue.module.css";
 
 const Catalogue = () => {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,7 @@ const Catalogue = () => {
 
   return (
     <div className={styles.catalogueContainer}>
+      <Home />
       <div className={styles.productGrid}>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
