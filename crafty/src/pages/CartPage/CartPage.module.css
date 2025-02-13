@@ -111,6 +111,7 @@
   width: 200px;
   text-align: center;
   font-size: 1.2rem;
+  border: none;
 }
 
 .checkoutButton:hover {

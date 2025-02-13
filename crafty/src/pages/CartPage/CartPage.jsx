@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './CartPage.module.css';
 import Home from '../Home/Home'
+import { createOrder } from '../../services/OrderServices';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -20,6 +20,30 @@ const CartPage = () => {
   const removeItem = (id) => {
     const updatedItems = cartItems.filter(item => item.id !== id);
     setCartItems(updatedItems);
+  };
+
+  const handleOrderSubmit = async () => {
+    const userId = 1;
+
+    const orderData = {
+      userId: userId,
+      totalAmount: calculateTotal(),
+      items: cartItems.map(item => ({
+        productId: item.id,
+        quantity: item.quantity,
+        price: item.prix
+      }))
+    };
+
+    const orderResponse = await createOrder(orderData);
+
+    if (orderResponse) {
+      alert("Commande passée avec succès!");
+      localStorage.removeItem('cart');
+      setCartItems([]);
+    } else {
+      alert("Erreur lors de la création de la commande.");
+    }
   };
 
   useEffect(() => {
@@ -60,7 +84,7 @@ const CartPage = () => {
       <h1>Résumé</h1>
       <p>{cartItems.length} produit{cartItems.length > 1 ? 's' : ''}</p>
       <p>Total : {calculateTotal()} €</p>
-      <Link to="/checkout" className={styles.checkoutButton}>Passer commande</Link>
+      <button onClick={handleOrderSubmit} className={styles.checkoutButton}>Passer commande</button>
     </div>
   )}
 </div>
