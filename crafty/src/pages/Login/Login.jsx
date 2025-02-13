@@ -17,7 +17,7 @@ const Login = () => {
 
     if (response && response.token) {
       localStorage.setItem("token", response.token); 
-      navigate("/home");
+      window.location.reload();
     } else {
       setError("Email ou mot de passe incorrect.");
     }
