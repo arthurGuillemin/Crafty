@@ -54,8 +54,8 @@
   border-radius: 20px;
   text-decoration: none;
   transition: background-color 0.3s;
-  margin-left: 15px; /* Espacement entre les boutons */
-  border: none; /* Enlever la bordure des boutons */
+  margin-left: 15px;
+  border: none;
 }
 
 .myButton:hover {

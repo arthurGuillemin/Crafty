@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchRecommendations } from "../../services/RecommandationServices";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCardMini from "./ProductCardMini";
+import styles from './reco.module.css'
 
 const ProductRecommendations = ({ description }) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -25,9 +26,9 @@ const ProductRecommendations = ({ description }) => {
     <div>
       <h3>Produits similaires</h3>
       {error && <p>{error}</p>}
-      <div>
+      <div className={styles.recommendationsList}>
         {recommendations.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCardMini key={product.id} product={product} />
         ))}
       </div>
     </div>

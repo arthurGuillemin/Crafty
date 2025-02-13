@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Catalogue from './pages/Catalogue/Catalogue';
 import Home from './pages/Home/Home';

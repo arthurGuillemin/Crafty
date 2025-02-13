@@ -4,9 +4,16 @@
 
 .recommendationsList {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 20px;
 }
+
+.recommendationsList .card {
+  flex: 0 0 auto;
+}
+
 
 .error {
   color: red;
