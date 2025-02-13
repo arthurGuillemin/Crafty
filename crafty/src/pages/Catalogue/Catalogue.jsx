@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './Catalogue.module.css';
 import Home from '../Home/Home';
-import { getAllProducts } from "../../services/productService";
 
 const Catalogue = () => {
   const [products, setProducts] = useState([]);

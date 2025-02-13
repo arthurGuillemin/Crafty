@@ -1,12 +1,16 @@
 // Fetch pour l'inscription d'un utilisateur
 export const signup = async (userData) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/signup", {
+    const response = await fetch("http://127.0.0.1:5000/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({
+        nom: userData.nom,  // ✅ On envoie le nom
+        email: userData.email,
+        mot_de_passe: userData.mot_de_passe,
+      }),
     });
 
     if (!response.ok) {
@@ -21,10 +25,11 @@ export const signup = async (userData) => {
   }
 };
 
+
 // Fetch pour la connexion d'un utilisateur
 export const login = async (credentials) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/login", {
+    const response = await fetch("http://127.0.0.1:5000/auth/login", {  // ✅ Corrigé
       method: "POST",
       headers: {
         "Content-Type": "application/json",

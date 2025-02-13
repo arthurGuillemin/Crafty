@@ -32,17 +32,13 @@ def test_db_connection():
 
 def create_user(nom, email, mot_de_passe):
     """Créer un nouvel utilisateur dans la base de données"""
-    hashed_password = generate_password_hash(mot_de_passe) 
+    hashed_password = generate_password_hash(mot_de_passe)  
 
     response = supabase_client.table("users").insert({
         "nom": nom,  
         "email": email,
         "mot_de_passe": hashed_password  
-    }).execute()
-
-    if response.get('error'):
-        return {"error": "Erreur lors de la création de l'utilisateur"}
-    
+    }).execute()    
     return {"message": "Utilisateur créé avec succès"}
 
 def login_user(email, mot_de_passe):
