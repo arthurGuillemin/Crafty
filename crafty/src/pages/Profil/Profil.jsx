@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserDetails, updateUser } from '../../services/UserServices';
 import userDefault from '../../assets/user-default.png'
+import Home from '../Home/Home';
+import styles from './Profil.module.css';
 
 const Profil = () => {
     const userId = 1; 
@@ -35,25 +37,53 @@ const Profil = () => {
     if (!user) return <p>Chargement...</p>;
 
     return (
-        <div>
-            <img src={user.avatar || userDefault} alt="Avatar" />
-            <h2 className="Hello">Hello {user.nom}</h2>
-            {isEditing ? (
-                <>
-                    <textarea name="description" value={user.description} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <input type="email" name="email" value={user.email} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <input type="text" name="adresse" value={user.adresse} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <button onClick={handleSave} className="SaveBtn">Enregistrer</button>
-                </>
-            ) : (
-                <>
-                    <p>Description : {user.description}</p>
-                    <p>Email : {user.email}</p>
-                    <p>Adresse : {user.adresse}</p>
-                    <button onClick={() => setIsEditing(true)} className="ModifBtn">Modifier</button>
-                </>
-            )}
+        <div className={styles.test}>
+        <Home />
+        <div className={styles.header}>
+            <img src={user.avatar || userDefault} alt="Avatar" className={styles.avatar} />
+            <h2 className={styles.username}>Hello {user.nom}</h2>
         </div>
+
+        {isEditing ? (
+            <>
+                <textarea
+                    name="description"
+                    value={user.description}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    placeholder="Description"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={user.email}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    placeholder="Email"
+                />
+                <input
+                    type="text"
+                    name="adresse"
+                    value={user.adresse}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    placeholder="Adresse"
+                />
+                <div className={styles.buttonContainer}>
+                    <button onClick={handleSave} className={styles.editBtn}>Enregistrer</button>
+                </div>
+            </>
+        ) : (
+            <>
+                <p className={styles.info}><strong>Description:</strong> {user.description}</p>
+                <p className={styles.info}><strong>Email:</strong> {user.email}</p>
+                <p className={styles.info}><strong>Adresse:</strong> {user.adresse}</p>
+                <div className={styles.buttonContainer}>
+                    <button onClick={() => setIsEditing(true)} className={styles.editBtn}>Modifier</button>
+                </div>
+            </>
+        )}
+    </div>
     );
 };
 

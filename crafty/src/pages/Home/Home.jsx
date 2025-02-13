@@ -15,6 +15,7 @@ const Home = () => {
     const [isRegisterOpen, setRegisterOpen] = useState(false);
     const navigate = useNavigate();
     return (
+        
         <div className={styles.homePage}>
             <header className={styles.myHeader}>
                 {/* Logo poussé à gauche */}

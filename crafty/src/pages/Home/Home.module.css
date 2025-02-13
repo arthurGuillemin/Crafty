@@ -50,12 +50,12 @@
   font-size: 14px;
   padding: 8px 20px;
   color: white;
-  background-color: rgb(133, 140, 121);
+  background-color: #858c79;
   border-radius: 20px;
   text-decoration: none;
   transition: background-color 0.3s;
-  margin-left: 15px; /* Espacement entre les boutons */
-  border: none; /* Enlever la bordure des boutons */
+  margin-left: 15px; 
+  border: none; 
 }
 
 .myButton:hover {
