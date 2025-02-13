@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../services/authServices"; 
+import { login } from "../../services/authServices";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,10 +11,10 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
-  
+
     const credentials = { email, password };
     const response = await login(credentials);
-  
+
     if (response && response.token) {
       localStorage.setItem("token", response.token);
       localStorage.setItem("user_id", response.user_id);
@@ -22,7 +22,7 @@ const Login = () => {
     } else {
       setError("Email ou mot de passe incorrect.");
     }
-  }    
+  }
 
   return (
     <div>
@@ -30,21 +30,21 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div>
           <label htmlFor="password">Mot de passe</label>
-          <input 
-            type="password" 
-            id="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>

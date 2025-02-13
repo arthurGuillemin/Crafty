@@ -1,26 +1,30 @@
+body {
+  align-items: flex-start;
+  overflow-y: scroll;
+  padding-top: 100px;
+}
 .addProductContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    align-items: flex-start;
-    padding-top: calc(100px + 20px); /* Utilisation de calc pour définir le padding */
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
 
 .addProductHeader {
   text-align: center;
   font-size: 28px;
   color: #333;
   margin-bottom: 30px;
+  width: 500px;
 }
 
 .addProductForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding-right: 20px;
 }
 
 .addProductForm input,

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { addProduct } from '../../services/ProductServices'; // Service pour envoyer l'article à la base de données
+import { useState, useEffect } from 'react';
+import { addProduct } from '../../services/productServices';
 import { useNavigate } from 'react-router-dom';
 import styles from './AddProduct.module.css';
 import Home from '../Home/Home';
@@ -17,6 +17,15 @@ const AddProduct = () => {
         image3: ''
     });
 
+    const userId = localStorage.getItem('user_id')
+
+    useEffect(() => {
+        if (!userId) {
+            alert("Vous devez être connecté pour ajouter un produit.");
+            navigate("/login");
+        }
+    }, [navigate, userId]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
@@ -24,10 +33,12 @@ const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await addProduct(product);
+        const productWithUserId = { ...product, vendeur_id: userId };
+
+        const result = await addProduct(productWithUserId);
         if (result) {
             alert('Produit ajouté avec succès');
-            navigate('/'); // Rediriger vers la page principale après ajout
+            navigate('/');
         } else {
             alert('Erreur lors de l\'ajout du produit');
         }
@@ -35,7 +46,7 @@ const AddProduct = () => {
 
     return (
         <div className={styles.addProductContainer}>
-            <Home/>
+            <Home />
             <h2 className={styles.addProductHeader}>Ajouter un nouvel article</h2>
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
                 <input
