@@ -17,12 +17,12 @@ const Login = () => {
   
     if (response && response.token) {
       localStorage.setItem("token", response.token);
-      localStorage.setItem("user_id", response.user_id);  
+      localStorage.setItem("user_id", response.user_id);
       window.location.reload();
     } else {
       setError("Email ou mot de passe incorrect.");
     }
-  };
+  }    
 
   return (
     <div>
