@@ -8,6 +8,7 @@ import ProductDetail from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/CartPage/CartPage';
 import Profil from './pages/Profil/Profil';
 import OrderHistory from '../src/components/Orders/OrderHistory';
+import AddProduct from './pages/AddProduct/AddProduct';
 
 import { AuthProvider } from '../src/context/authcontext';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
       </Router>
     </AuthProvider>

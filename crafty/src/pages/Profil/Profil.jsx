@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserDetails, updateUser } from '../../services/UserServices';
-import userDefault from '../../assets/user-default.png'
+import userDefault from '../../assets/user-default.png';
+import { useNavigate } from 'react-router-dom';
 
 const Profil = () => {
-    const userId = 1; 
+    const userId = 1;
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    
+    const navigate = useNavigate();
+
     useEffect(() => {
         const getUserDetails = async () => {
             const userData = await fetchUserDetails(userId);
@@ -23,9 +25,9 @@ const Profil = () => {
     };
 
     const handleSave = async () => {
-        console.log("Updating user with data:", user); 
+        console.log("Updating user with data:", user);
         const updatedUser = await updateUser(userId, user);
-        
+
         if (updatedUser) {
             setUser(updatedUser);
             setIsEditing(false);
@@ -53,6 +55,7 @@ const Profil = () => {
                     <button onClick={() => setIsEditing(true)} className="ModifBtn">Modifier</button>
                 </>
             )}
+            <button onClick={() => navigate('/add-product')} className="AddProductBtn">Ajouter un article</button>
         </div>
     );
 };
