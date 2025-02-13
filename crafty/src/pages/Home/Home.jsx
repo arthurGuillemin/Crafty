@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
@@ -17,11 +17,8 @@ const Home = () => {
     return (
         <div className={styles.homePage}>
             <header className={styles.myHeader}>
-                {/* Logo poussé à gauche */}
                 <img className={styles.logo} src={CraftyLogo} alt="logo" onClick={() => navigate('/')} />
-
                 <div className={styles.navContainer}>
-                    {/* Icônes et boutons alignés à droite */}
                     <div className={styles.headerIcons}>
                         <button className={styles.Labuttonee} onClick={() => navigate('/cart')}>
                             <img src={CartIcon} alt="Cart" className={styles.headerIcons} />
@@ -30,7 +27,6 @@ const Home = () => {
                             <img src={UserIcon} alt="User" className={styles.headerIcons} />
                         </button>
                     </div>
-
                     <div className={styles.headerButtons}>
                         <button className={styles.myButton} onClick={() => setLoginOpen(true)}>Se connecter</button>
                         <button className={styles.myButton} onClick={() => setRegisterOpen(true)}>S'inscrire</button>
