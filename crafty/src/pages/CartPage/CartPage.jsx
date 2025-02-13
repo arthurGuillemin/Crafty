@@ -23,7 +23,7 @@ const CartPage = () => {
   };
 
   const handleOrderSubmit = async () => {
-    const userId = JSON.parse(localStorage.getItem("userId"));
+    const userId = localStorage.getItem("user_id");
     console.log("User ID from localStorage:", userId);
     if (!userId) {
       alert("Vous devez être connecté pour passer une commande.");
