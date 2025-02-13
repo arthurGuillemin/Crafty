@@ -18,7 +18,6 @@ const Home = () => {
                         <button className={styles.Labuttonee}>
                             <img src={UserIcon} alt="User" className={styles.myIcon} />
                         </button>
-                        
                     </div>
                     <div className={styles.headerButtons}>
                         <Link to="/login" className={styles.myButton}>Se connecter</Link>
