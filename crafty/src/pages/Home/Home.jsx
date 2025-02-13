@@ -6,8 +6,8 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Modal from '../Home/Modal';
 
-import CartIcon from '../../assets/cart-shopping-solid.svg';
-import UserIcon from '../../assets/user-solid.svg';
+import BasketIcon from '../../assets/basket.svg';
+import UserIcon from '../../assets/user.svg';
 import CraftyLogo from '../../assets/crafty3.png'; 
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
                 <article className={styles.rightSide}>
                 <div className={styles.headerIcons}>
                         <button className={styles.Labuttonee}>
-                            <img src={CartIcon} alt="Cart" className={styles.myIcon} />
+                            <img src={BasketIcon} alt="Cart" className={styles.myIcon} />
                         </button>
                         <button className={styles.Labuttonee} onClick={() => navigate('/profil')}>
                             <img src={UserIcon} alt="User" className={styles.myIcon} />
