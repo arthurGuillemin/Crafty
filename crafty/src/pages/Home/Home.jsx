@@ -8,39 +8,43 @@ import Modal from '../Home/Modal';
 
 import CartIcon from '../../assets/cart-shopping-solid.svg';
 import UserIcon from '../../assets/user-solid.svg';
-import CraftyLogo from '../../assets/crafty3.png'; 
+import CraftyLogo from '../../assets/crafty3.png';
 
 const Home = () => {
     const [isLoginOpen, setLoginOpen] = useState(false);
     const [isRegisterOpen, setRegisterOpen] = useState(false);
     const navigate = useNavigate();
-  return (
-    <div className={styles.homePage}>
-      <header className={styles.myHeader}>
-                <img src={CraftyLogo} alt="logo" onClick={() => navigate('/')}/>
-                <article className={styles.rightSide}>
-                <div className={styles.headerIcons}>
+    return (
+        <div className={styles.homePage}>
+            <header className={styles.myHeader}>
+                {/* Logo poussé à gauche */}
+                <img className={styles.logo} src={CraftyLogo} alt="logo" onClick={() => navigate('/')} />
+
+                <div className={styles.navContainer}>
+                    {/* Icônes et boutons alignés à droite */}
+                    <div className={styles.headerIcons}>
                         <button className={styles.Labuttonee} onClick={() => navigate('/cart')}>
-                            <img src={CartIcon} alt="Cart" className={styles.myIcon} />
+                            <img src={CartIcon} alt="Cart" className={styles.headerIcons} />
                         </button>
                         <button className={styles.Labuttonee} onClick={() => navigate('/profil')}>
-                            <img src={UserIcon} alt="User" className={styles.myIcon} />
+                            <img src={UserIcon} alt="User" className={styles.headerIcons} />
                         </button>
                     </div>
+
                     <div className={styles.headerButtons}>
                         <button className={styles.myButton} onClick={() => setLoginOpen(true)}>Se connecter</button>
                         <button className={styles.myButton} onClick={() => setRegisterOpen(true)}>S'inscrire</button>
-                        <Modal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)}>
-                            <Login />
-                        </Modal>
-                        <Modal isOpen={isRegisterOpen} onClose={() => setRegisterOpen(false)}>
-                            <Register />
-                        </Modal>
                     </div>
-                </article>
+                </div>
             </header>
-    </div>
-  );
+            <Modal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)}>
+                <Login />
+            </Modal>
+            <Modal isOpen={isRegisterOpen} onClose={() => setRegisterOpen(false)}>
+                <Register />
+            </Modal>
+        </div>
+    );
 };
 
 export default Home;
