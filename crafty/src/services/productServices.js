@@ -1,7 +1,7 @@
 // Fetch pour récupérer tous les produits
 export const fetchAllProducts = async () => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/allProducts");
+    const response = await fetch("http://127.0.0.1:5000/prod/allProducts");
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des produits");
@@ -18,7 +18,7 @@ export const fetchAllProducts = async () => {
 // Fetch pour récupérer un produit spécifique par ID
 export const fetchProductById = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/products/${id}`);
+    const response = await fetch(`http://127.0.0.1:5000/prod/products/${id}`);
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération du produit");
