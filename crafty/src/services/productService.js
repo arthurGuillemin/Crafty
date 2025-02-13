@@ -1,4 +1,4 @@
-import supabase from "./supabaseClient";
+
 
 // Récupérer tous les produits
 export const getAllProducts = async () => {
