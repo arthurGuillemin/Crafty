@@ -17,10 +17,10 @@ const Home = () => {
   return (
     <div className={styles.homePage}>
       <header className={styles.myHeader}>
-                <img src={CraftyLogo} alt="logo" />
+                <img src={CraftyLogo} alt="logo" onClick={() => navigate('/')}/>
                 <article className={styles.rightSide}>
                 <div className={styles.headerIcons}>
-                        <button className={styles.Labuttonee}>
+                        <button className={styles.Labuttonee} onClick={() => navigate('/cart')}>
                             <img src={CartIcon} alt="Cart" className={styles.myIcon} />
                         </button>
                         <button className={styles.Labuttonee} onClick={() => navigate('/profil')}>
