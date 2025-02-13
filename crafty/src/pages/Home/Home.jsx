@@ -8,9 +8,9 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Modal from '../Home/Modal';
 
-import CartIcon from '../../assets/cart-shopping-solid.svg';
-import UserIcon from '../../assets/user-solid.svg';
-import CraftyLogo from '../../assets/crafty3.png';
+import BasketIcon from '../../assets/basket.svg';
+import UserIcon from '../../assets/user.svg';
+import CraftyLogo from '../../assets/crafty3.png'; 
 
 const Home = () => {
   const [isLoginOpen, setLoginOpen] = useState(false);
@@ -18,10 +18,23 @@ const Home = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
 
+<<<<<<< HEAD
   return (
     <div className={styles.homePage}>
       <header className={styles.myHeader}>
         <img className={styles.logo} src={CraftyLogo} alt="logo" onClick={() => navigate('/')} />
+=======
+                <div className={styles.navContainer}>
+                    {/* Icônes et boutons alignés à droite */}
+                    <div className={styles.headerIcons}>
+                        <button className={styles.Labuttonee} onClick={() => navigate('/cart')}>
+                            <img src={BasketIcon} alt="Cart" className={styles.headerIcons} />
+                        </button>
+                        <button className={styles.Labuttonee} onClick={() => navigate('/profil')}>
+                            <img src={UserIcon} alt="User" className={styles.headerIcons} />
+                        </button>
+                    </div>
+>>>>>>> 530a0b6cdfc6058ea1da7f5c4e34f361e93e050c
 
         <div className={styles.navContainer}>
           <div className={styles.headerIcons}>
