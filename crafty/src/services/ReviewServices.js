@@ -1,7 +1,7 @@
 // Fetch pour ajouter un avis sur un produit
 export const addReview = async (reviewData) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/add", {
+    const response = await fetch("http://127.0.0.1:5000/reviews/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const addReview = async (reviewData) => {
 // Fetch pour modifier un avis existant
 export const updateReview = async (reviewId, reviewData) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/${reviewId}`, {
+    const response = await fetch(`http://127.0.0.1:5000/reviews/${reviewId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

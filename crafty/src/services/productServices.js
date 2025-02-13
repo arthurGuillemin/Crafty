@@ -35,7 +35,7 @@ export const fetchProductById = async (id) => {
 // Fetch pour récupérer les avis d'un produit spécifique par ID
 export const fetchReviewsByProductId = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/reviews/${id}`);
+    const response = await fetch(`http://127.0.0.1:5000/prod/reviews/${id}`);
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des avis");
@@ -52,7 +52,7 @@ export const fetchReviewsByProductId = async (id) => {
 // Fetch pour récupérer les produits d'un vendeur par ID
 export const fetchProductsBySellerId = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/seller/${id}`);
+    const response = await fetch(`http://127.0.0.1:5000/prod/seller/${id}`);
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des produits du vendeur");
@@ -69,7 +69,7 @@ export const fetchProductsBySellerId = async (id) => {
 // Fetch pour récupérer toutes les catégories
 export const fetchCategories = async () => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/categories");
+    const response = await fetch("http://127.0.0.1:5000/prod/categories");
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des catégories");
@@ -86,7 +86,7 @@ export const fetchCategories = async () => {
 // Fetch pour récupérer une catégorie par ID
 export const fetchCategoryById = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/categories/${id}`);
+    const response = await fetch(`http://127.0.0.1:5000/prod/categories/${id}`);
 
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération de la catégorie");
@@ -103,7 +103,7 @@ export const fetchCategoryById = async (id) => {
 // Fetch pour ajouter un produit
 export const addProduct = async (productData) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/add", {
+    const response = await fetch("http://127.0.0.1:5000/prod/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ export const addProduct = async (productData) => {
 // Fetch pour mettre à jour un produit
 export const updateProduct = async (id, productData) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/${id}`, {
+    const response = await fetch(`http://127.0.0.1:5000/prod/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +149,7 @@ export const updateProduct = async (id, productData) => {
 // Fetch pour supprimer un produit
 export const deleteProduct = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:5000/${id}`, {
+    const response = await fetch(`http://127.0.0.1:5000/prod/${id}`, {
       method: "DELETE",
     });
 
