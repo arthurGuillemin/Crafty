@@ -1,4 +1,3 @@
-// src/pages/Home/Home.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
@@ -12,6 +11,7 @@ import BasketIcon from '../../assets/basket.svg';
 import UserIcon from '../../assets/user.svg';
 import CraftyLogo from '../../assets/crafty3.png';
 const Home = () => {
+
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isRegisterOpen, setRegisterOpen] = useState(false);
   const navigate = useNavigate();
