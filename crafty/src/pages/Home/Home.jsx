@@ -8,7 +8,6 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Modal from '../Home/Modal';
 
-import CartIcon from '../../assets/cart-shopping-solid.svg';
 import UserIcon from '../../assets/user-solid.svg';
 import CraftyLogo from '../../assets/crafty3.png';
 
