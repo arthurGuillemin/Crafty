@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../services/productServices';
 import styles from './ProductDetails.module.css';
 import Home from '../Home/Home';
+import ProductRecommendations from '../../components/ProductCard/reco';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -57,6 +58,7 @@ const ProductDetail = () => {
     };
 
   return (
+    <>
     <div className={styles.productDetail}>
       <Home />
       <div className={styles.imageSection}>
@@ -86,6 +88,9 @@ const ProductDetail = () => {
         </div>
       </div>
     </div>
+    <ProductRecommendations description={product.description} />
+  </>
+
   );
 };
 

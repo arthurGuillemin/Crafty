@@ -32,44 +32,45 @@ export const fetchUserName = async (id) => {
   }
 };
 
+// Supprimer un utilisateur
 export const deleteUser = async (id) => {
   try {
     const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reviewData),
+      }
     });
+
     if (!response.ok) {
       throw new Error("Erreur lors de la suppression de l'utilisateur");
     }
-    const data = await response.json();
-    return data;
+
+    return await response.json();
   } catch (error) {
     console.error("deleteUser:", error.message);
-    return null; 
+    return null;
   }
 };
 
-
-export const updateUser = async (id) => {
+export const updateUser = async (id, updatedData) => {
   try {
     const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(reviewData),
+      body: JSON.stringify(updatedData), // Correction ici
     });
+
     if (!response.ok) {
       throw new Error("Erreur lors de la modification de l'utilisateur");
     }
-    const data = await response.json();
-    return data;
+
+    return await response.json();
   } catch (error) {
     console.error("updateUser:", error.message);
-    return null; 
+    return null;
   }
 };
 

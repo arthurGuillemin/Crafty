@@ -1,0 +1,13 @@
+.recommendationsContainer {
+  margin-top: 20px;
+}
+
+.recommendationsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.error {
+  color: red;
+}

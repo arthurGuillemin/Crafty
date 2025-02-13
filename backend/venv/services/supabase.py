@@ -64,10 +64,9 @@ def create_user(nom, email, mot_de_passe):
     return {"message": "Utilisateur créé avec succès"}
 
 def login_user(email, mot_de_passe):
-    """Vérifier les informations d'identification de l'utilisateur et retourner un token JWT"""
+    """Vérifier les informations d'identification et retourner un token JWT + user_id"""
     response = supabase_client.table("users").select("id, mot_de_passe").eq("email", email).execute()
     
-    # On vérifie si la requête renvoie des données
     if not response.data or len(response.data) == 0:
         return {"error": "Email ou mot de passe incorrect"}
     
@@ -76,7 +75,11 @@ def login_user(email, mot_de_passe):
         return {"error": "Email ou mot de passe incorrect"}
     
     token = generate_token(user['id'])
-    return {"message": "Connexion réussie", "token": token}
+    return {
+        "message": "Connexion réussie",
+        "token": token,
+        "user_id": user["id"] 
+    }
 
 def get_user_by_id(user_id):
     """Récupérer un utilisateur spécifique par son ID"""
