@@ -98,9 +98,10 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <ProductRecommendations description={product.description} />
+      {/* Passage de excludeProductId */}
+      <ProductRecommendations description={product.description} excludeProductId={product.id} />
     </>
   );
-};
+}
 
 export default ProductDetail;
