@@ -10,9 +10,7 @@ from routes.review_routes import review_routes
 from routes.recommandation_routes import recommend_routes
 
 
-#packges
-from flask_graphql import GraphQLView
-from services.graphql_schema import schema 
+
 
 app = Flask(__name__)
 
@@ -26,14 +24,7 @@ app.register_blueprint(recommend_routes, url_prefix="/reco")
 
 
 
-app.add_url_rule(
-    "/graphql",
-    view_func=GraphQLView.as_view(
-        "graphql",
-        schema=schema,
-        graphiql=True,
-    ),
-)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
