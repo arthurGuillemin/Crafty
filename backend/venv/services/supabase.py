@@ -1,16 +1,38 @@
 import os
+import jwt
 from dotenv import load_dotenv
 from supabase import create_client , Client
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 load_dotenv()
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+
+def generate_token(user_id):
+    """Génère un token JWT"""
+    payload = {
+        "user_id": user_id,
+        "exp": datetime.utcnow() + timedelta(hours=2)
+    }
+    return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+
+def decode_token(token):
+    """Décode un token JWT"""
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        return payload["user_id"]
+    except jwt.ExpiredSignatureError:
+        return None
+    except jwt.InvalidTokenError:
+        return None
+
 
 #       test       #
 
@@ -42,14 +64,19 @@ def create_user(nom, email, mot_de_passe):
     return {"message": "Utilisateur créé avec succès"}
 
 def login_user(email, mot_de_passe):
-    """Vérifier les informations d'identification de l'utilisateur"""
-    response = supabase_client.table("users").select("*").eq("email", email).execute()
-    if response.get('error') or len(response['data']) == 0:
+    """Vérifier les informations d'identification de l'utilisateur et retourner un token JWT"""
+    response = supabase_client.table("users").select("id, mot_de_passe").eq("email", email).execute()
+    
+    # On vérifie si la requête renvoie des données
+    if not response.data or len(response.data) == 0:
         return {"error": "Email ou mot de passe incorrect"}
-    user = response['data'][0]
+    
+    user = response.data[0]
     if not check_password_hash(user['mot_de_passe'], mot_de_passe):
         return {"error": "Email ou mot de passe incorrect"}
-    return {"message": "Connexion réussie"}
+    
+    token = generate_token(user['id'])
+    return {"message": "Connexion réussie", "token": token}
 
 def get_user_by_id(user_id):
     """Récupérer un utilisateur spécifique par son ID"""
