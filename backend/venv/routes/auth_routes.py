@@ -7,7 +7,6 @@ auth_routes = Blueprint("auth_routes", __name__)
 def signup():
     """Créer un compte utilisateur"""
     data = request.get_json()
-    
     nom = data.get("nom") 
     email = data.get("email")
     mot_de_passe = data.get("mot_de_passe")  
@@ -16,7 +15,6 @@ def signup():
         return jsonify({"error": "Nom, email et mot de passe requis"}), 400
     
     result = create_user(nom, email, mot_de_passe) 
-    
     
     return jsonify(result), 201
 
@@ -31,8 +29,4 @@ def login():
         return jsonify({"error": "Email et mot de passe requis"}), 400
 
     result = login_user(email, password)
-
-    if result.get("error"):
-        return jsonify(result), 401
-
     return jsonify(result), 200

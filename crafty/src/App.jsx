@@ -4,6 +4,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import ProductDetail from './pages/ProductDetails/ProductDetails';
+import Cart from './pages/CartPage/CartPage';
 import Profil from './pages/Profil/Profil';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="/profil" element={<Profil />} />
       </Routes>
     </Router>
