@@ -8,9 +8,9 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Modal from '../Home/Modal';
 
-import UserIcon from '../../assets/user-solid.svg';
+import BasketIcon from '../../assets/basket.svg';
+import UserIcon from '../../assets/user.svg';
 import CraftyLogo from '../../assets/crafty3.png';
-
 const Home = () => {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isRegisterOpen, setRegisterOpen] = useState(false);
@@ -25,7 +25,7 @@ const Home = () => {
         <div className={styles.navContainer}>
           <div className={styles.headerIcons}>
             <button className={styles.Labuttonee} onClick={() => navigate('/cart')}>
-              <img src={CartIcon} alt="Cart" className={styles.headerIcons} />
+              <img src={BasketIcon} alt="Cart" className={styles.headerIcons} />
             </button>
             <button className={styles.Labuttonee} onClick={() => navigate('/profil')}>
               <img src={UserIcon} alt="User" className={styles.headerIcons} />
