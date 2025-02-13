@@ -3,17 +3,20 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.stats import pearsonr
 from services.supabase import supabase_client
 
-def recommend_products(search_query):
+def recommend_products(keywords):
     """Recommander des produits similaires à la recherche de l'utilisateur"""
     try:
-        #  Récupérer les descriptions des produits depuis la bdd
+        # Récupérer les descriptions des produits depuis la BDD
         response = supabase_client.table("products").select("id, titre, description").execute()
 
         if not response.data:
             return {"error": "Aucun produit trouvé"}
 
+        # Concaténer les mots-clés en une phrase (meilleur matching TF-IDF)
+        query_text = " ".join(keywords)
+
         # Construire le corpus (Recherche + Descriptions Produits)
-        texts = [search_query] + [p["description"] for p in response.data]
+        texts = [query_text] + [p["description"] for p in response.data]
 
         # Vectorisation TF-IDF
         vect = TfidfVectorizer()
@@ -22,12 +25,12 @@ def recommend_products(search_query):
         query_vector = tfidf_mat[0]  # Vecteur de la requête utilisateur
         product_vectors = tfidf_mat[1:]  # Vecteurs des produits
 
-        # Calcul de la corzlation de Pearson entre la requete et chaque produit
+        # Calcul de la corrzlation de Pearson 
         recommended_products = []
         for idx, product_vector in enumerate(product_vectors):
             pearson_corr, _ = pearsonr(query_vector, product_vector)
-            
-            if pearson_corr > 0.20:  #similarité de 20 % ( a peut etre changer mais opur l'instnt ne pas toucher)
+
+            if pearson_corr > 0.20:  # Seuil de similarité à ajuster si nécessaire
                 recommended_products.append({
                     "id": response.data[idx]["id"],
                     "titre": response.data[idx]["titre"],
