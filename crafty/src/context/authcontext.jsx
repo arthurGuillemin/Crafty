@@ -1,28 +1,24 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // Vérifie immédiatement si un token existe dans le localStorage
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // Optionnel : tu peux appeler un endpoint /auth/me pour récupérer les infos utilisateur à partir du token
-    // Exemple :
-    // const token = localStorage.getItem('token');
-    // if (token) { fetchUserData(token).then(data => setUser(data)); }
-  }, []);
+  const [user, setUser] = useState(() => {
+    const storedUserId = localStorage.getItem('user_id');
+    return storedUserId ? { id: storedUserId } : null;
+  });
 
   const login = (token, userData) => {
     localStorage.setItem('token', token);
+    localStorage.setItem('user_id', userData.id);
     setIsAuthenticated(true);
     setUser(userData);
   };
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
     setIsAuthenticated(false);
     setUser(null);
   };

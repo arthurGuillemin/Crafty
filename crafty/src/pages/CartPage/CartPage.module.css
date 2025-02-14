@@ -7,9 +7,7 @@
 .cartItems {
   display: flex;
   flex-direction: column;
-  width: 65%;
 }
-
 
 .cartItem {
   display: flex;

@@ -1,0 +1,57 @@
+body {
+  align-items: flex-start;
+  overflow-y: scroll;
+  padding-top: 100px;
+}
+.addProductContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.addProductHeader {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
+  width: 500px;
+}
+
+.addProductForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-right: 20px;
+}
+
+.addProductForm input,
+.addProductForm textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.addProductForm button {
+  background-color: #6c7567;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.addProductForm button:hover {
+  background-color: #5b6454;
+}
+
+.addProductForm input[type="file"] {
+  padding: 5px;
+}

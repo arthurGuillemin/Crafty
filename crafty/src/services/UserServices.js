@@ -32,26 +32,26 @@ export const fetchUserName = async (id) => {
   }
 };
 
+// Supprimer un utilisateur
 export const deleteUser = async (id) => {
   try {
     const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reviewData),
+      }
     });
+
     if (!response.ok) {
       throw new Error("Erreur lors de la suppression de l'utilisateur");
     }
-    const data = await response.json();
-    return data;
+
+    return await response.json();
   } catch (error) {
     console.error("deleteUser:", error.message);
-    return null; 
+    return null;
   }
 };
-
 
 export const updateUser = async (id, user) => {
   try {
@@ -61,6 +61,7 @@ export const updateUser = async (id, user) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
+
     });
 
     if (!response.ok) {

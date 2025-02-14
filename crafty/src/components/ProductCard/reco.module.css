@@ -1,0 +1,20 @@
+.recommendationsContainer {
+  margin-top: 20px;
+}
+
+.recommendationsList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.recommendationsList .card {
+  flex: 0 0 auto;
+}
+
+
+.error {
+  color: red;
+}
