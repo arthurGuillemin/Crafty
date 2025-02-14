@@ -22,7 +22,7 @@ const Login = () => {
     } else {
       setError("Email ou mot de passe incorrect.");
     }
-  };
+  }    
 
   return (
     <div>

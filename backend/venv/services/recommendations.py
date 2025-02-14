@@ -30,7 +30,7 @@ def recommend_products(keywords):
         for idx, product_vector in enumerate(product_vectors):
             pearson_corr, _ = pearsonr(query_vector, product_vector)
 
-            if pearson_corr > 0.20:  
+            if pearson_corr > 0.10:  
                 recommended_products.append({
                     "id": response.data[idx]["id"],
                     "titre": response.data[idx]["titre"],

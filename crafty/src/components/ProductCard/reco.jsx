@@ -3,14 +3,13 @@ import { fetchRecommendations } from "../../services/RecommandationServices";
 import ProductCardMini from "./ProductCardMini";
 import styles from './reco.module.css'
 
-const ProductRecommendations = ({ description }) => {
+const ProductRecommendations = ({ description, excludeProductId }) => {
   const [recommendations, setRecommendations] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const getRecommendations = async () => {
       if (!description) return;
-
       const data = await fetchRecommendations(description);
       if (data?.results) {
         setRecommendations(data.results);
@@ -18,9 +17,12 @@ const ProductRecommendations = ({ description }) => {
         setError("Aucune recommandation trouvée.");
       }
     };
-
     getRecommendations();
   }, [description]);
+
+  const filteredRecommendations = recommendations.filter(
+    (rec) => rec.id !== excludeProductId
+  );
 
   return (
     <div>

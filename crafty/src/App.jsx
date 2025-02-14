@@ -6,6 +6,8 @@ import Register from './pages/Register/Register';
 import ProductDetail from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/CartPage/CartPage';
 import Profil from './pages/Profil/Profil';
+import OrderHistory from '../src/components/Orders/OrderHistory';
+
 import { AuthProvider } from '../src/context/authcontext';
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/profil" element={<Profil />} />
+          <Route path="/order-history" element={<OrderHistory />} />
         </Routes>
       </Router>
     </AuthProvider>

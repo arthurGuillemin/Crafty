@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../services/productServices';
 import styles from './ProductDetails.module.css';
 import Home from '../Home/Home';
 import ProductRecommendations from '../../components/ProductCard/reco';
+import { AuthContext } from '../../context/authcontext';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -35,6 +37,7 @@ const ProductDetail = () => {
   if (error) return <p>{error}</p>;
   if (!product) return <p>Produit introuvable.</p>;
 
+
   const addToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
     const productExists = existingCart.find(item => item.id === product.id);
@@ -46,7 +49,6 @@ const ProductDetail = () => {
     }
 
     localStorage.setItem('cart', JSON.stringify(existingCart));
-
     alert('Produit ajouté au panier');
   };
 
@@ -57,6 +59,7 @@ const ProductDetail = () => {
         <div className={styles.imageSection}>
           <img src={selectedImage} alt={product.titre} className={styles.mainImage} />
           <div className={styles.thumbnailContainer}>
+
             {[product.image1, product.image2, product.image3].filter(Boolean).map((img, index) => (
               <img
                 key={index}
@@ -81,10 +84,11 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
       <ProductRecommendations description={product.description} />
     </>
 
   );
-};
+}
 
 export default ProductDetail;
