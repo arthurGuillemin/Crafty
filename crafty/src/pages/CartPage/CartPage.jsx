@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './CartPage.module.css';
-import Home from '../Home/Home'
+import Home from '../Home/Home';
 import { createOrder } from '../../services/OrderServices';
 
 const CartPage = () => {
@@ -40,7 +40,7 @@ const CartPage = () => {
     };
 
     const orderResponse = await createOrder(orderData);
-    if (orderResponse) {
+    if (orderResponse && orderResponse.order_id) {
       alert("Commande passée avec succès!");
       localStorage.removeItem('cart');
       setCartItems([]);
@@ -48,7 +48,6 @@ const CartPage = () => {
       alert("Erreur lors de la création de la commande.");
     }
   };
-
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -92,8 +91,6 @@ const CartPage = () => {
         </div>
       )}
     </div>
-
-
   );
 };
 

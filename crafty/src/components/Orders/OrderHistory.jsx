@@ -66,7 +66,6 @@ const OrderHistory = () => {
               <p>
                 <strong>Statut:</strong> {order.statut}
               </p>
-              <button onClick={() => viewOrderDetails(order.id)}>Voir détails</button>
             </li>
           ))}
         </ul>
