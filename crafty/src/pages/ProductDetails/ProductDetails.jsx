@@ -37,26 +37,17 @@ const ProductDetail = () => {
   if (error) return <p>{error}</p>;
   if (!product) return <p>Produit introuvable.</p>;
 
-  // Fonction pour ajouter un produit au panier
+
   const addToCart = () => {
-    if (!isAuthenticated) {
-      alert("Vous devez être connecté pour ajouter un produit au panier.");
-      return;
-    }
-    // Récupérer les articles déjà présents dans le panier
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Vérifier si le produit est déjà dans le panier
     const productExists = existingCart.find(item => item.id === product.id);
 
     if (productExists) {
-      // Si le produit existe déjà, augmenter la quantité
       productExists.quantity += 1;
     } else {
-      // Sinon, ajouter le produit au panier avec une quantité de 1
       existingCart.push({ ...product, quantity: 1 });
     }
 
-    // Sauvegarder les modifications dans le localStorage
     localStorage.setItem('cart', JSON.stringify(existingCart));
     alert('Produit ajouté au panier');
   };
@@ -68,28 +59,23 @@ const ProductDetail = () => {
         <div className={styles.imageSection}>
           <img src={selectedImage} alt={product.titre} className={styles.mainImage} />
           <div className={styles.thumbnailContainer}>
-            {[product.image1, product.image2, product.image3]
-              .filter(Boolean)
-              .map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`Miniature ${index + 1}`}
-                  className={`${styles.thumbnail} ${selectedImage === img ? styles.activeThumbnail : ''}`}
-                  onClick={() => setSelectedImage(img)}
-                />
-              ))}
+
+            {[product.image1, product.image2, product.image3].filter(Boolean).map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`Miniature ${index + 1}`}
+                className={`${styles.thumbnail} ${selectedImage === img ? styles.activeThumbnail : ''}`}
+                onClick={() => setSelectedImage(img)}
+              />
+            ))}
           </div>
         </div>
         <div className={styles.infoSection}>
           <h1 className={styles.title}>{product.titre}</h1>
-          <p className={styles.vendeur}>
-            Vendu par <strong>{product.users?.nom || 'Inconnu'}</strong>
-          </p>
+          <p className={styles.vendeur}>Vendu par <strong>{product.users?.nom || 'Inconnu'}</strong></p>
           <p className={styles.prix}>{product.prix} €</p>
-          <button className={styles.addToCart} onClick={addToCart}>
-            Ajouter au panier
-          </button>
+          <button className={styles.addToCart} onClick={addToCart}>Ajouter au panier</button>
           <div className={styles.details}>
             <h3>Détails du produit</h3>
             <p><strong>Catégorie :</strong> {product.categorie || 'Non spécifiée'}</p>
@@ -98,9 +84,10 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      {/* Passage de excludeProductId */}
-      <ProductRecommendations description={product.description} excludeProductId={product.id} />
+
+      <ProductRecommendations description={product.description} />
     </>
+
   );
 }
 
