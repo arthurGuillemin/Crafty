@@ -1,7 +1,6 @@
 .test{
     width: 700px;
 }
-
 .header {
     display: flex;
     width: 80%;
@@ -9,30 +8,26 @@
     gap: 15px;
     margin-bottom: 20px;
 }
-
 textarea {
     resize: none;
 }
-
 .avatar {
     width: 100px;
     height: auto;
-    border-radius: 50%;
-    border: 2px solid #ddd;
+    padding-bottom: 90px;
 }
-
 .username {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
+    padding-top: 50px;
+    margin-bottom: 20px;
 }
-
 .info {
     font-size: 1rem;
     color: #555;
     margin-bottom: 10px;
 }
-
 .inputField {
     width: 100%;
     padding: 10px;
@@ -42,18 +37,15 @@ textarea {
     margin-bottom: 10px;
     transition: border 0.3s ease;
 }
-
 .inputField:focus {
     border-color: #858c79;
     outline: none;
 }
-
 .buttonContainer {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
 }
-
 .button {
     display: inline-block;
     padding: 10px 15px;
@@ -62,8 +54,8 @@ textarea {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
+    
 }
-
 .saveBtn {
     background: #858c79;
     color: white;
@@ -71,19 +63,21 @@ textarea {
     border: none;
     border-radius: 20px;
 }
-
 .saveBtn:hover {
     background: #5c6154;
 }
-
 .editBtn {
     background: #858c79;
     color: white;
     padding: 5px 20px;
     border: none;
     border-radius: 20px;
+    margin-right: 30px;
 }
-
 .editBtn:hover {
     background: #5c6154;
+}
+
+.infoContainer {
+    flex-direction: column;
 }

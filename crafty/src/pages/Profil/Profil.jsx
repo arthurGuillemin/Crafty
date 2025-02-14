@@ -44,27 +44,11 @@ const Profil = () => {
         <Home />
         <div className={styles.header}>
             <img src={user.avatar || userDefault} alt="Avatar" className={styles.avatar} />
+            <div className={styles.infoContainer}>
             <h2 className={styles.username}>Hello {user.nom}</h2>
+            
             {isEditing ? (
-                <>
-                    <textarea name="description" value={user.description} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <input type="email" name="email" value={user.email} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <input type="text" name="adresse" value={user.adresse} onChange={handleChange} className="border p-2 w-full mb-2" />
-                    <button onClick={handleSave} className="SaveBtn">Enregistrer</button>
-                </>
-            ) : (
-                <>
-                    <p>Description : {user.description}</p>
-                    <p>Email : {user.email}</p>
-                    <p>Adresse : {user.adresse}</p>
-                    <button onClick={() => setIsEditing(true)} className="ModifBtn">Modifier</button>
-                </>
-            )}
-            <button onClick={() => navigate('/add-product')} className="AddProductBtn">Ajouter un article</button>
 
-        </div>
-
-        {isEditing ? (
             <>
                 <input name="name"
                     value={user.name}
@@ -105,9 +89,13 @@ const Profil = () => {
                 <p className={styles.info}><strong>Adresse:</strong> {user.adresse}</p>
                 <div className={styles.buttonContainer}>
                     <button onClick={() => setIsEditing(true)} className={styles.editBtn}>Modifier</button>
+                    <button onClick={() => navigate('/add-product')} className={styles.editBtn}>Ajouter un article</button>
+                    <button onClick={() => navigate('/order-history')} className={styles.editBtn}>Voir mes commandes</button>
                 </div>
             </>
         )}
+    </div>
+    </div>
     </div>
     );
 };
