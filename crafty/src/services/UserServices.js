@@ -53,23 +53,24 @@ export const deleteUser = async (id) => {
 };
 
 
-export const updateUser = async (id) => {
+export const updateUser = async (id, user) => {
   try {
     const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(reviewData),
+      body: JSON.stringify(user),
     });
+
     if (!response.ok) {
       throw new Error("Erreur lors de la modification de l'utilisateur");
     }
-    const data = await response.json();
-    return data;
+
+    return await response.json();
   } catch (error) {
     console.error("updateUser:", error.message);
-    return null; 
+    return null;
   }
 };
 
