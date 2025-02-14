@@ -7,7 +7,7 @@ export const signup = async (userData) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        nom: userData.nom,  // ✅ On envoie le nom
+        nom: userData.nom,  
         email: userData.email,
         mot_de_passe: userData.mot_de_passe,
       }),
@@ -29,7 +29,7 @@ export const signup = async (userData) => {
 // Fetch pour la connexion d'un utilisateur
 export const login = async (credentials) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/auth/login", {  // ✅ Corrigé
+    const response = await fetch("http://127.0.0.1:5000/auth/login", {  
       method: "POST",
       headers: {
         "Content-Type": "application/json",
