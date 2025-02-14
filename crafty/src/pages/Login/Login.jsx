@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/authServices";
 
@@ -22,7 +22,7 @@ const Login = () => {
     } else {
       setError("Email ou mot de passe incorrect.");
     }
-  }    
+  }
 
   return (
     <div>
